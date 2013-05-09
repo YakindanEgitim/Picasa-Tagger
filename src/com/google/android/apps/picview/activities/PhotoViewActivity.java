@@ -24,14 +24,20 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Menu;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.picasa_tagger.R;
+import com.google.android.apps.picview.adapter.AccountsAdapter;
+import com.google.android.apps.picview.data.Account;
 import com.google.android.apps.picview.data.FileSystemImageCache;
 import com.google.android.apps.picview.data.Photo;
 import com.google.android.apps.picview.request.CachedImageFetcher;
@@ -43,6 +49,7 @@ import com.google.android.apps.picview.request.ImageLoadingTask;
  * @author haeberling@google.com (Sascha Haeberling)
  */
 public class PhotoViewActivity extends Activity {
+	  private AccountsAdapter adapter;
 
 	private static class SavedConfiguration {
 		public int currentIndex;
@@ -175,4 +182,24 @@ public class PhotoViewActivity extends Activity {
 			}
 		}
 	}
+
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+
+	    if (v.getId() != R.id.accounts_list) {
+	      return;
+	    }
+
+	    AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+	    Account account = (Account) adapter.getItem(info.position);
+	    menu.setHeaderTitle(account.toString());
+
+	    String[] menuItems = getResources().getStringArray(R.array.account_actions);
+	    for (int i = 0; i < menuItems.length; i++) {
+	      menu.add(Menu.NONE, i, i, menuItems[i]);
+	    }
+	}
+
 }

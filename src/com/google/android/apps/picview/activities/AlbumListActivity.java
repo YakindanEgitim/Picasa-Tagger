@@ -54,7 +54,8 @@ import com.google.android.apps.picview.ui.ThumbnailItem;
  * @author haeberling@google.com (Sascha Haeberling)
  */
 public class AlbumListActivity extends Activity {
-  private static final String TAG = AlbumListActivity.class.getSimpleName();
+	private static final String TAG = "AlbumListActivity";
+	private static final boolean dbg = false;
 
   private static class SavedConfiguration {
     public final List<Album> albums;
@@ -187,6 +188,8 @@ public class AlbumListActivity extends Activity {
     ThumbnailClickListener<Album> foo = new ThumbnailClickListener<Album>() {
       @Override
       public void thumbnailClicked(Album album) {
+    	  if(dbg)
+    	  Log.v(TAG, album.getGdataUrl());
         doPhotosRequest(album.getName(), album.getGdataUrl());
       }
     };

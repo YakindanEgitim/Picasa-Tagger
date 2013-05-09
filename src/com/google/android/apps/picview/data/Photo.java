@@ -41,6 +41,8 @@ import com.google.android.apps.picview.data.parser.PicasaPhotosSaxHandler;
  * @author haeberling@google.com (Sascha Haeberling)
  */
 public class Photo implements Serializable, Parcelable {
+	private static final String TAG = "Photo";
+	private static final boolean dbg = true;
   private static final long serialVersionUID = 1L;
 
   private String name;
@@ -89,6 +91,8 @@ public class Photo implements Serializable, Parcelable {
       // TODO: Maybe we should replace all these special characters with
       // XML entities?
       xmlStr = xmlStr.replace("+", "&#43;");
+      if(dbg)
+      Log.v(TAG, xmlStr);
       Xml.parse(xmlStr, handler);
       return handler.getPhotos();
     } catch (SAXException e) {
