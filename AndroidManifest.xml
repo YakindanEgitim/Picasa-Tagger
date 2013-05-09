@@ -4,25 +4,50 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="13"
         android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:label="@string/app_name" >
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleTop" >
+            android:name="AccountList"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    
+        <activity
+            android:name="MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="AppInfo"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.google.android.apps.picview.activities.AlbumListActivity"
+            android:theme="@android:style/Theme.Holo" />
+        <activity
+            android:name="com.google.android.apps.picview.activities.PhotoListActivity"
+            android:theme="@android:style/Theme.Holo" />
+        <activity
+            android:name="com.google.android.apps.picview.activities.PhotoViewActivity"
+            android:theme="@android:style/Theme.Holo" />
+        <activity
+            android:name="com.google.android.apps.picview.activities.PicViewPreferencesActivity"
+            android:theme="@android:style/Theme.Holo" />
     </application>
 
 </manifest>

@@ -1,31 +1,29 @@
 package com.example.picasa_tagger;
 
+import android.accounts.AccountManager;
 import android.app.Activity;
 import android.os.Bundle;
- 
-import com.google.gdata.client.*;
-import com.google.gdata.client.photos.*;
-import com.google.gdata.data.*;
-import com.google.gdata.data.media.*;
-import com.google.gdata.data.photos.*;
-import com.google.gdata.client.photos.PicasawebService;
-import com.google.gdata.util.AuthenticationException;
+import android.util.Log;
+
 
 public class MainActivity extends Activity{
-
-	private static final String TAG = "PicasaAndroidSample";
-
-
-
-	@Override
+	private static final boolean dbg = true;
+	private static final String TAG = "MainActivity";
+    protected AccountManager accountManager; 
+ 
+	
+	@Override   
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		try {
-		PicasawebService myService = new PicasawebService("exampleCo-exampleApp-1");
+		GetUrl url = new GetUrl("https://gdata.youtube.com/feeds/api/videos");
+		url.setArg("q", "skateboarding+dog");
+		url.setArg("start-index", "21");
+		url.setArg("max-results", "10");
+		if(dbg)
+			Log.v(TAG, url.getUrl());
+        accountManager = AccountManager.get(getApplicationContext());
 		
-			myService.setUserCredentials("liz@gmail.com", "mypassword");
-		} catch (AuthenticationException e) {
-			e.printStackTrace();
-		}
+
 	}
+
 }

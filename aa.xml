@@ -1,0 +1,663 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:gphoto="http://schemas.google.com/photos/2007"
+    xmlns:media="http://search.yahoo.com/mrss/"
+    xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/"
+    xmlns="http://www.w3.org/2005/Atom" >
+
+    <id>
+http://picasaweb.google.com/data/feed/api/user/default
+    </id>
+
+    <updated>
+2013-05-06T00:15:23.200Z
+    </updated>
+
+    <category
+        scheme="http://schemas.google.com/g/2005#kind"
+        term="http://schemas.google.com/photos/2007#user" />
+
+    <title type="text" >
+103129729689614933228
+    </title>
+
+    <subtitle type="text" />
+
+    <icon>
+http://lh4.ggpht.com/-PZP59eGxa7Y/AAAAAAAAAAI/AAAAAAAAAAA/AJiTUl3x6dc/s64-c/103129729689614933228.jpg
+    </icon>
+
+    <link
+        href="http://picasaweb.google.com/data/feed/api/user/103129729689614933228"
+        rel="http://schemas.google.com/g/2005#feed"
+        type="application/atom+xml" />
+
+    <link
+        href="http://picasaweb.google.com/data/feed/api/user/103129729689614933228?tok=QUI1UGxRWTNwdWtiNU03R1d6ck1jbTFJaGxadnBoYUtrZzoxMzY4MDU2ODExMTY4"
+        rel="http://schemas.google.com/g/2005#post"
+        type="application/atom+xml" />
+
+    <link
+        href="https://picasaweb.google.com/103129729689614933228"
+        rel="alternate"
+        type="text/html" />
+
+    <link
+        href="https://picasaweb.google.com/s/c/bin/slideshow.swf?host=picasaweb.google.com&amp;RGB=0x000000&amp;feed=http%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fapi%2Fuser%2F103129729689614933228%3Falt%3Drss"
+        rel="http://schemas.google.com/photos/2007#slideshow"
+        type="application/x-shockwave-flash" />
+
+    <link
+        href="http://picasaweb.google.com/data/feed/api/user/103129729689614933228?start-index=1&amp;max-results=1000"
+        rel="self"
+        type="application/atom+xml" />
+
+    <author>
+
+        <name>
+talha akkaslar
+        </name>
+
+        <uri>
+https://picasaweb.google.com/103129729689614933228
+        </uri>
+    </author>
+
+    <generator
+        uri="http://picasaweb.google.com/"
+        version="1.00" >
+Picasaweb
+    </generator>
+
+    <openSearch:totalResults>
+4
+    </openSearch:totalResults>
+
+    <openSearch:startIndex>
+1
+    </openSearch:startIndex>
+
+    <openSearch:itemsPerPage>
+1000
+    </openSearch:itemsPerPage>
+
+    <gphoto:user>
+103129729689614933228
+    </gphoto:user>
+
+    <gphoto:nickname>
+talha akkaslar
+    </gphoto:nickname>
+
+    <gphoto:thumbnail>
+http://lh4.ggpht.com/-PZP59eGxa7Y/AAAAAAAAAAI/AAAAAAAAAAA/AJiTUl3x6dc/s64-c/103129729689614933228.jpg
+    </gphoto:thumbnail>
+
+    <gphoto:quotalimit>
+5368709120
+    </gphoto:quotalimit>
+
+    <gphoto:quotacurrent>
+15809055
+    </gphoto:quotacurrent>
+
+    <gphoto:maxPhotosPerAlbum>
+1000
+    </gphoto:maxPhotosPerAlbum>
+
+    <entry>
+
+        <id>
+http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873034892155669553
+        </id>
+
+        <published>
+2013-05-01T15:34:54.000Z
+        </published>
+
+        <updated>
+2013-05-01T15:43:18.993Z
+        </updated>
+
+        <category
+            scheme="http://schemas.google.com/g/2005#kind"
+            term="http://schemas.google.com/photos/2007#album" />
+
+        <title type="text" >
+01 05 2013
+        </title>
+
+        <summary type="text" />
+
+        <rights type="text" >
+private
+        </rights>
+
+        <link
+            href="http://picasaweb.google.com/data/feed/api/user/103129729689614933228/albumid/5873034892155669553?authkey=Gv1sRgCLqArO2YvL7t6AE"
+            rel="http://schemas.google.com/g/2005#feed"
+            type="application/atom+xml" />
+
+        <link
+            href="https://picasaweb.google.com/103129729689614933228/01052013?authkey=Gv1sRgCLqArO2YvL7t6AE"
+            rel="alternate"
+            type="text/html" />
+
+        <link
+            href="http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873034892155669553?authkey=Gv1sRgCLqArO2YvL7t6AE"
+            rel="self"
+            type="application/atom+xml" />
+
+        <link
+            href="http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873034892155669553/5?tok=QUI1UGxRYk9wODMzRkh4Y2VtcktvNGktSk1uekk1UGRiZzoxMzY4MDU2ODExMTY4&amp;authkey=Gv1sRgCLqArO2YvL7t6AE"
+            rel="edit"
+            type="application/atom+xml" />
+
+        <link
+            href="http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873034892155669553/acl?authkey=Gv1sRgCLqArO2YvL7t6AE"
+            rel="http://schemas.google.com/acl/2007#accessControlList"
+            type="application/atom+xml" />
+
+        <author>
+
+            <name>
+talha akkaslar
+            </name>
+
+            <uri>
+https://picasaweb.google.com/103129729689614933228
+            </uri>
+        </author>
+
+        <gphoto:id>
+5873034892155669553
+        </gphoto:id>
+
+        <gphoto:name>
+01052013
+        </gphoto:name>
+
+        <gphoto:location />
+
+        <gphoto:access>
+private
+        </gphoto:access>
+
+        <gphoto:timestamp>
+1367422494000
+        </gphoto:timestamp>
+
+        <gphoto:numphotos>
+1
+        </gphoto:numphotos>
+
+        <gphoto:numphotosremaining>
+999
+        </gphoto:numphotosremaining>
+
+        <gphoto:bytesUsed>
+256568
+        </gphoto:bytesUsed>
+
+        <gphoto:user>
+103129729689614933228
+        </gphoto:user>
+
+        <gphoto:nickname>
+talha akkaslar
+        </gphoto:nickname>
+
+        <gphoto:commentingEnabled>
+true
+        </gphoto:commentingEnabled>
+
+        <gphoto:commentCount>
+0
+        </gphoto:commentCount>
+
+        <gphoto:albumType>
+Buzz
+        </gphoto:albumType>
+
+        <media:group>
+
+            <media:content
+                medium="image"
+                type="image/jpeg"
+                url="http://lh4.ggpht.com/-Ic1lIWkib1A/UYE2HiRpzDE/AAAAAAAAAEE/LBkZpJujtLI/01052013.jpg" />
+
+            <media:credit>
+talha akkaslar
+            </media:credit>
+
+            <media:description type="plain" />
+
+            <media:keywords />
+
+            <media:thumbnail
+                height="160"
+                url="http://lh4.ggpht.com/-Ic1lIWkib1A/UYE2HiRpzDE/AAAAAAAAAEE/LBkZpJujtLI/s160-c/01052013.jpg"
+                width="160" />
+
+            <media:title type="plain" >
+01 05 2013
+            </media:title>
+        </media:group>
+    </entry>
+
+    <entry>
+
+        <id>
+http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873034478893512561
+        </id>
+
+        <published>
+2013-04-11T09:14:48.000Z
+        </published>
+
+        <updated>
+2013-05-01T15:41:43.630Z
+        </updated>
+
+        <category
+            scheme="http://schemas.google.com/g/2005#kind"
+            term="http://schemas.google.com/photos/2007#album" />
+
+        <title type="text" >
+Camera Roll
+        </title>
+
+        <summary type="text" />
+
+        <rights type="text" >
+protected
+        </rights>
+
+        <link
+            href="http://picasaweb.google.com/data/feed/api/user/103129729689614933228/albumid/5873034478893512561"
+            rel="http://schemas.google.com/g/2005#feed"
+            type="application/atom+xml" />
+
+        <link
+            href="https://picasaweb.google.com/103129729689614933228/CameraRoll"
+            rel="alternate"
+            type="text/html" />
+
+        <link
+            href="http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873034478893512561"
+            rel="self"
+            type="application/atom+xml" />
+
+        <link
+            href="http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873034478893512561/5?tok=QUI1UGxRWjg3V3V6WWl6dUlRM05xXzF0MTkweTFhcnI4dzoxMzY4MDU2ODExMTY4"
+            rel="edit"
+            type="application/atom+xml" />
+
+        <link
+            href="http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873034478893512561/acl"
+            rel="http://schemas.google.com/acl/2007#accessControlList"
+            type="application/atom+xml" />
+
+        <author>
+
+            <name>
+talha akkaslar
+            </name>
+
+            <uri>
+https://picasaweb.google.com/103129729689614933228
+            </uri>
+        </author>
+
+        <gphoto:id>
+5873034478893512561
+        </gphoto:id>
+
+        <gphoto:name>
+CameraRoll
+        </gphoto:name>
+
+        <gphoto:location />
+
+        <gphoto:access>
+protected
+        </gphoto:access>
+
+        <gphoto:timestamp>
+1365671688000
+        </gphoto:timestamp>
+
+        <gphoto:numphotos>
+1
+        </gphoto:numphotos>
+
+        <gphoto:numphotosremaining>
+999
+        </gphoto:numphotosremaining>
+
+        <gphoto:bytesUsed>
+256568
+        </gphoto:bytesUsed>
+
+        <gphoto:user>
+103129729689614933228
+        </gphoto:user>
+
+        <gphoto:nickname>
+talha akkaslar
+        </gphoto:nickname>
+
+        <gphoto:commentingEnabled>
+true
+        </gphoto:commentingEnabled>
+
+        <gphoto:commentCount>
+0
+        </gphoto:commentCount>
+
+        <media:group>
+
+            <media:content
+                medium="image"
+                type="image/jpeg"
+                url="http://lh3.ggpht.com/-w7uXY3JIoSI/UYE1vewRt3E/AAAAAAAAACI/5q7fm0pBbk4/CameraRoll.jpg" />
+
+            <media:credit>
+talha akkaslar
+            </media:credit>
+
+            <media:description type="plain" />
+
+            <media:keywords />
+
+            <media:thumbnail
+                height="160"
+                url="http://lh3.ggpht.com/-w7uXY3JIoSI/UYE1vewRt3E/AAAAAAAAACI/5q7fm0pBbk4/s160-c/CameraRoll.jpg"
+                width="160" />
+
+            <media:title type="plain" >
+Camera Roll
+            </media:title>
+        </media:group>
+    </entry>
+
+    <entry>
+
+        <id>
+http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5756636879674576241
+        </id>
+
+        <published>
+2012-06-21T23:31:09.000Z
+        </published>
+
+        <updated>
+2013-05-06T00:15:23.200Z
+        </updated>
+
+        <category
+            scheme="http://schemas.google.com/g/2005#kind"
+            term="http://schemas.google.com/photos/2007#album" />
+
+        <title type="text" >
+Scrapbook Photos
+        </title>
+
+        <summary type="text" >
+Album for scrapbook photos
+        </summary>
+
+        <rights type="text" >
+public
+        </rights>
+
+        <link
+            href="http://picasaweb.google.com/data/feed/api/user/103129729689614933228/albumid/5756636879674576241"
+            rel="http://schemas.google.com/g/2005#feed"
+            type="application/atom+xml" />
+
+        <link
+            href="https://picasaweb.google.com/103129729689614933228/ScrapbookPhotos"
+            rel="alternate"
+            type="text/html" />
+
+        <link
+            href="http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5756636879674576241"
+            rel="self"
+            type="application/atom+xml" />
+
+        <link
+            href="http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5756636879674576241/5?tok=QUI1UGxRYVhhN3dVR1p4a2ZKcDU1bDRnb1F3YW5rY2pBZzoxMzY4MDU2ODExMTY4"
+            rel="edit"
+            type="application/atom+xml" />
+
+        <link
+            href="http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5756636879674576241/acl"
+            rel="http://schemas.google.com/acl/2007#accessControlList"
+            type="application/atom+xml" />
+
+        <author>
+
+            <name>
+talha akkaslar
+            </name>
+
+            <uri>
+https://picasaweb.google.com/103129729689614933228
+            </uri>
+        </author>
+
+        <gphoto:id>
+5756636879674576241
+        </gphoto:id>
+
+        <gphoto:name>
+ScrapbookPhotos
+        </gphoto:name>
+
+        <gphoto:location />
+
+        <gphoto:access>
+public
+        </gphoto:access>
+
+        <gphoto:timestamp>
+1340321469000
+        </gphoto:timestamp>
+
+        <gphoto:numphotos>
+1
+        </gphoto:numphotos>
+
+        <gphoto:numphotosremaining>
+999
+        </gphoto:numphotosremaining>
+
+        <gphoto:bytesUsed>
+409946
+        </gphoto:bytesUsed>
+
+        <gphoto:user>
+103129729689614933228
+        </gphoto:user>
+
+        <gphoto:nickname>
+talha akkaslar
+        </gphoto:nickname>
+
+        <gphoto:commentingEnabled>
+true
+        </gphoto:commentingEnabled>
+
+        <gphoto:commentCount>
+0
+        </gphoto:commentCount>
+
+        <gphoto:albumType>
+ScrapBook
+        </gphoto:albumType>
+
+        <media:group>
+
+            <media:content
+                medium="image"
+                type="image/jpeg"
+                url="http://lh6.ggpht.com/-zaooHvXcEEU/T-OuvfnqjXE/AAAAAAAAABw/TPX-fobqYLI/ScrapbookPhotos.jpg" />
+
+            <media:credit>
+talha akkaslar
+            </media:credit>
+
+            <media:description type="plain" >
+Scrapbook Photos
+            </media:description>
+
+            <media:keywords />
+
+            <media:thumbnail
+                height="160"
+                url="http://lh6.ggpht.com/-zaooHvXcEEU/T-OuvfnqjXE/AAAAAAAAABw/TPX-fobqYLI/s160-c/ScrapbookPhotos.jpg"
+                width="160" />
+
+            <media:title type="plain" >
+Scrapbook Photos
+            </media:title>
+        </media:group>
+    </entry>
+
+    <entry>
+
+        <id>
+http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873042284431343937
+        </id>
+
+        <published>
+2008-10-30T14:50:06.000Z
+        </published>
+
+        <updated>
+2013-05-01T16:12:32.987Z
+        </updated>
+
+        <category
+            scheme="http://schemas.google.com/g/2005#kind"
+            term="http://schemas.google.com/photos/2007#album" />
+
+        <title type="text" >
+PreVogue Blogger template - BTemplates_files
+        </title>
+
+        <summary type="text" />
+
+        <rights type="text" >
+private
+        </rights>
+
+        <link
+            href="http://picasaweb.google.com/data/feed/api/user/103129729689614933228/albumid/5873042284431343937?authkey=Gv1sRgCLyqtLrnxvaTtwE"
+            rel="http://schemas.google.com/g/2005#feed"
+            type="application/atom+xml" />
+
+        <link
+            href="https://picasaweb.google.com/103129729689614933228/PreVogueBloggerTemplateBTemplates_files?authkey=Gv1sRgCLyqtLrnxvaTtwE"
+            rel="alternate"
+            type="text/html" />
+
+        <link
+            href="http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873042284431343937?authkey=Gv1sRgCLyqtLrnxvaTtwE"
+            rel="self"
+            type="application/atom+xml" />
+
+        <link
+            href="http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873042284431343937/20?tok=QUI1UGxRYVk1RlNGWjc2OFJQc1NtZ2dfU2ZReXlCVEpTZzoxMzY4MDU2ODExMTY4&amp;authkey=Gv1sRgCLyqtLrnxvaTtwE"
+            rel="edit"
+            type="application/atom+xml" />
+
+        <link
+            href="http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873042284431343937/acl?authkey=Gv1sRgCLyqtLrnxvaTtwE"
+            rel="http://schemas.google.com/acl/2007#accessControlList"
+            type="application/atom+xml" />
+
+        <author>
+
+            <name>
+talha akkaslar
+            </name>
+
+            <uri>
+https://picasaweb.google.com/103129729689614933228
+            </uri>
+        </author>
+
+        <gphoto:id>
+5873042284431343937
+        </gphoto:id>
+
+        <gphoto:name>
+PreVogueBloggerTemplateBTemplates_files
+        </gphoto:name>
+
+        <gphoto:location />
+
+        <gphoto:access>
+private
+        </gphoto:access>
+
+        <gphoto:timestamp>
+1225378206000
+        </gphoto:timestamp>
+
+        <gphoto:numphotos>
+7
+        </gphoto:numphotos>
+
+        <gphoto:numphotosremaining>
+993
+        </gphoto:numphotosremaining>
+
+        <gphoto:bytesUsed>
+179551
+        </gphoto:bytesUsed>
+
+        <gphoto:user>
+103129729689614933228
+        </gphoto:user>
+
+        <gphoto:nickname>
+talha akkaslar
+        </gphoto:nickname>
+
+        <gphoto:commentingEnabled>
+true
+        </gphoto:commentingEnabled>
+
+        <gphoto:commentCount>
+0
+        </gphoto:commentCount>
+
+        <media:group>
+
+            <media:content
+                medium="image"
+                type="image/jpeg"
+                url="http://lh5.ggpht.com/-NC74Aohwkio/UYE810phAUE/AAAAAAAAAD4/EldLpogWwY8/PreVogueBloggerTemplateBTemplates_files.jpg" />
+
+            <media:credit>
+talha akkaslar
+            </media:credit>
+
+            <media:description type="plain" />
+
+            <media:keywords />
+
+            <media:thumbnail
+                height="160"
+                url="http://lh5.ggpht.com/-NC74Aohwkio/UYE810phAUE/AAAAAAAAAD4/EldLpogWwY8/s160-c/PreVogueBloggerTemplateBTemplates_files.jpg"
+                width="160" />
+
+            <media:title type="plain" >
+PreVogue Blogger template - BTemplates_files
+            </media:title>
+        </media:group>
+    </entry>
+
+</feed>
