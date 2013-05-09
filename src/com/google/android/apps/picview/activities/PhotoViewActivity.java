@@ -22,20 +22,25 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.picasa_tagger.AlbumListActivity;
 import com.example.picasa_tagger.R;
+import com.example.picasa_tagger.TagDialog;
 import com.google.android.apps.picview.adapter.AccountsAdapter;
 import com.google.android.apps.picview.data.Account;
 import com.google.android.apps.picview.data.FileSystemImageCache;
@@ -49,8 +54,15 @@ import com.google.android.apps.picview.request.ImageLoadingTask;
  * @author haeberling@google.com (Sascha Haeberling)
  */
 public class PhotoViewActivity extends Activity {
-	  private AccountsAdapter adapter;
+	private static final String TAG = "PhotoViewActivity";
+	private static final boolean dbg = true;
+	private static final int MENU_ADD_ACCOUNT = 0;
+	private static final int MENU_PREFERENCES = 1;
+	private static final int MENU_ABOUT = 2;
+	private AccountsAdapter adapter;
 
+	private static final int CONTEXT_MENU_CREDITS = 0;
+	private static final int CONTEXT_MENU_TAGS = 1;
 	private static class SavedConfiguration {
 		public int currentIndex;
 		public CachedImageFetcher cachedImageFetcher;
@@ -81,7 +93,6 @@ public class PhotoViewActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.photo_view);
@@ -183,23 +194,38 @@ public class PhotoViewActivity extends Activity {
 		}
 	}
 
+	
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		menu.add(0, CONTEXT_MENU_CREDITS, 0, R.string.credist);
+		menu.add(0, CONTEXT_MENU_TAGS, 1, R.string.tags);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case CONTEXT_MENU_CREDITS:
+			// TODO implement these 
+			if(dbg)
+				Log.v(TAG, "CONTEXT_MENU_CREDITS clicked");
+			return true;
+		case CONTEXT_MENU_TAGS:
+			if(dbg)
+				Log.v(TAG, "CONTEXT_MENU_TAGS clicked");
+			TagDialog tg = new TagDialog(this);
+			tg.show();
+			return true; 
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
-		super.onCreateContextMenu(menu, v, menuInfo);
-
-	    if (v.getId() != R.id.accounts_list) {
-	      return;
-	    }
-
-	    AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-	    Account account = (Account) adapter.getItem(info.position);
-	    menu.setHeaderTitle(account.toString());
-
-	    String[] menuItems = getResources().getStringArray(R.array.account_actions);
-	    for (int i = 0; i < menuItems.length; i++) {
-	      menu.add(Menu.NONE, i, i, menuItems[i]);
-	    }
+		if (v.getId() != R.id.accounts_list) {
+			return;
+		}
 	}
-
 }

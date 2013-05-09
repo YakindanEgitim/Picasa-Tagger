@@ -11,6 +11,7 @@ public final class R {
     public static final class array {
         public static final int account_actions=0x7f060001;
         public static final int account_type_array=0x7f060000;
+        public static final int pic_actions=0x7f060002;
     }
     public static final class attr {
     }
@@ -30,7 +31,11 @@ public final class R {
         public static final int accounts_list=0x7f080003;
         public static final int album_thumbnail=0x7f080010;
         public static final int albumlist=0x7f080007;
+        public static final int button_cancel=0x7f080015;
+        public static final int button_new_tag=0x7f080013;
+        public static final int button_save=0x7f080014;
         public static final int cancel=0x7f080006;
+        public static final int check_box=0x7f080017;
         public static final int ok=0x7f080005;
         public static final int photo=0x7f08000b;
         public static final int photo_album_name=0x7f08000c;
@@ -41,6 +46,8 @@ public final class R {
         public static final int picture_title=0x7f080011;
         public static final int selection=0x7f080009;
         public static final int service_logo=0x7f080000;
+        public static final int tag_text=0x7f080016;
+        public static final int tags_list=0x7f080012;
         public static final int textView1=0x7f080008;
     }
     public static final class layout {
@@ -53,6 +60,8 @@ public final class R {
         public static final int photo_list=0x7f030006;
         public static final int photo_view=0x7f030007;
         public static final int picture_entry=0x7f030008;
+        public static final int tag_dialog=0x7f030009;
+        public static final int tag_list_item=0x7f03000a;
     }
     public static final class string {
         public static final int about=0x7f050008;
@@ -75,9 +84,13 @@ public final class R {
         public static final int are_you_sure_delete=0x7f05000e;
         public static final int cancel=0x7f050002;
         public static final int choose_account_type=0x7f05000d;
+        /**  Pic Menu Dialog. 
+         */
+        public static final int credist=0x7f050010;
         public static final int no=0x7f050004;
         public static final int ok=0x7f050001;
         public static final int preferences=0x7f050007;
+        public static final int tags=0x7f050011;
         public static final int yes=0x7f050003;
     }
     public static final class style {

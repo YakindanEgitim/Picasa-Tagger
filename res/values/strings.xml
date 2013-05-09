@@ -35,4 +35,12 @@
 
     <!-- Content description strings. -->
     <string name="account_type_logo">Logo for account type</string>
+
+    <!-- Pic Menu Dialog. --> 
+    <string name="credist">Credits</string>
+    <string name="tags">Tags</string>   
+    <string-array name="pic_actions">
+        <item>credits</item>
+        <item>tags</item>
+    </string-array>
 </resources>
