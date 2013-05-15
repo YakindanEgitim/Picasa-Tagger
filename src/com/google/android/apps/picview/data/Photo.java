@@ -92,7 +92,7 @@ public class Photo implements Serializable, Parcelable {
       // XML entities?
       xmlStr = xmlStr.replace("+", "&#43;");
       if(dbg)
-      Log.v(TAG, xmlStr);
+    	  Log.v(TAG, xmlStr);
       Xml.parse(xmlStr, handler);
       return handler.getPhotos();
     } catch (SAXException e) {
@@ -231,6 +231,8 @@ public class Photo implements Serializable, Parcelable {
   }
   public void addKeywordsFromString(String keywords) {
 	  this.keywords = new ArrayList<String>();
+	  if(dbg)
+			Log.v(TAG, "keywords -> " + keywords);
 	  for(String key: keywords.split(",")){
 		  addKeyword(key);
 	  }
@@ -245,4 +247,9 @@ public class Photo implements Serializable, Parcelable {
   public String getImageUrl() {
 	  return imageUrl;
   }
+
+public void saveOnServer() {
+	// TODO Auto-generated method stub
+	
+}
 }

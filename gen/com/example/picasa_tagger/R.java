@@ -31,11 +31,11 @@ public final class R {
         public static final int accounts_list=0x7f080003;
         public static final int album_thumbnail=0x7f080010;
         public static final int albumlist=0x7f080007;
-        public static final int button_cancel=0x7f080015;
-        public static final int button_new_tag=0x7f080013;
-        public static final int button_save=0x7f080014;
+        public static final int button_cancel=0x7f080016;
+        public static final int button_new_tag=0x7f080014;
+        public static final int button_save=0x7f080015;
         public static final int cancel=0x7f080006;
-        public static final int check_box=0x7f080017;
+        public static final int check_box=0x7f080018;
         public static final int ok=0x7f080005;
         public static final int photo=0x7f08000b;
         public static final int photo_album_name=0x7f08000c;
@@ -46,7 +46,8 @@ public final class R {
         public static final int picture_title=0x7f080011;
         public static final int selection=0x7f080009;
         public static final int service_logo=0x7f080000;
-        public static final int tag_text=0x7f080016;
+        public static final int tag_name=0x7f080013;
+        public static final int tag_text=0x7f080017;
         public static final int tags_list=0x7f080012;
         public static final int textView1=0x7f080008;
     }

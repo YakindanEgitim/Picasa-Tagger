@@ -55,7 +55,7 @@ import com.google.android.apps.picview.request.ImageLoadingTask;
  */
 public class PhotoViewActivity extends Activity {
 	private static final String TAG = "PhotoViewActivity";
-	private static final boolean dbg = true;
+	private static final boolean dbg = false;
 	private static final int MENU_ADD_ACCOUNT = 0;
 	private static final int MENU_PREFERENCES = 1;
 	private static final int MENU_ABOUT = 2;
@@ -214,7 +214,7 @@ public class PhotoViewActivity extends Activity {
 		case CONTEXT_MENU_TAGS:
 			if(dbg)
 				Log.v(TAG, "CONTEXT_MENU_TAGS clicked");
-			TagDialog tg = new TagDialog(this);
+			TagDialog tg = new TagDialog(this,photos.get(currentIndex));
 			tg.show();
 			return true; 
 		}
