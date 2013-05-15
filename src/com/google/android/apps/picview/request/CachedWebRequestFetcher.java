@@ -18,9 +18,13 @@ package com.google.android.apps.picview.request;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.HashMap;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import android.util.Log;
 
@@ -66,7 +70,7 @@ public class CachedWebRequestFetcher {
    *          whether the content should be fetched from the web, regardless of
    *          whether it is present in any of the caches
    */
-  public CachedResponse<String> cachedFetch(URL url, boolean forceFetchFromWeb) {
+  public CachedResponse<String> cachedFetch(URL url, String args,boolean forceFetchFromWeb) {
 
     // Make sure we have a URL object that we can synchronize on.
     url = getSynchronizableInstance(url);
@@ -96,7 +100,7 @@ public class CachedWebRequestFetcher {
       // from cache was intentionally skipped, try to fetch it
       // from the network.
       if (responseText == null || forceFetchFromWeb) {
-        responseText = fetchFromWeb(url);
+        responseText = fetchFromWeb(url, args);
         if (responseText != null) {
           fileSystemCache.asyncPut(url, "TODO", responseText);
         }
@@ -120,14 +124,16 @@ public class CachedWebRequestFetcher {
   /**
    * Fetches the given URL from the web.
    */
-  public String fetchFromWeb(URL url) {
+  public String fetchFromWeb(URL url, String output) {
     Log.d(TAG, "Fetching from web: " + url.toString());
     try {
-      HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+      HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
       conn.setUseCaches(false);
       conn.setReadTimeout(30000); // 30 seconds.
       conn.setDoInput(true);
       conn.connect();
+      OutputStreamWriter out = new OutputStreamWriter( conn.getOutputStream());
+      out.write("string=" + URLEncoder.encode(output, "UTF-8"));
       InputStream is = conn.getInputStream();
       return readStringFromStream(is);
     } catch (IOException e) {

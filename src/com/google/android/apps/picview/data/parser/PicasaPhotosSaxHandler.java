@@ -38,7 +38,7 @@ public class PicasaPhotosSaxHandler extends DefaultHandler {
 	private static final boolean dbg = true;
 	private List<Photo> albums = new ArrayList<Photo>();
 	private Photo currentPhoto;
-	private List<String> elementNames = Arrays.asList(new String[]{"content", "title", "credit", "description", "group", "keyword", "thumbnail","name"});
+	private List<String> elementNames = Arrays.asList(new String[]{"content", "title", "credit", "description", "group", "keywords", "thumbnail","name"});
 	private int currentElement = -1;
 	private StringBuilder nameBuilder = new StringBuilder();
 	private StringBuilder titleBuilder = new StringBuilder();
