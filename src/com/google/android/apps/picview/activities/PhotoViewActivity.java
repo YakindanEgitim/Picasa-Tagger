@@ -22,7 +22,6 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -32,17 +31,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.picasa_tagger.AlbumListActivity;
 import com.example.picasa_tagger.R;
 import com.example.picasa_tagger.TagDialog;
 import com.google.android.apps.picview.adapter.AccountsAdapter;
-import com.google.android.apps.picview.data.Account;
 import com.google.android.apps.picview.data.FileSystemImageCache;
 import com.google.android.apps.picview.data.Photo;
 import com.google.android.apps.picview.request.CachedImageFetcher;

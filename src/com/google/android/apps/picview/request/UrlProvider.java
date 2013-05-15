@@ -26,4 +26,5 @@ public interface UrlProvider {
    * Returns the URL.
    */
   public String getUrl();
+  public String getAuthUrl(String authKey);
 }

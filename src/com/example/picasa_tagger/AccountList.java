@@ -1,8 +1,5 @@
 package com.example.picasa_tagger;
 
-import com.google.android.apps.picview.activities.AccountsActivity;
-import com.google.android.apps.picview.activities.AlbumListActivity;
-
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.ListActivity;
@@ -31,12 +28,12 @@ public class AccountList extends ListActivity {
     }
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        Intent intent = new Intent(this, AlbumListActivity.class);
+       /* Intent intent = new Intent(this, AlbumListActivity.class);
         intent.putExtra("accountId", accounts[position].name);
-        this.startActivity(intent);
-    	/*Account account = accounts[position];
+        this.startActivity(intent);*/
+    	Account account = accounts[position];
     	Intent intent = new Intent(this, AppInfo.class);
     	intent.putExtra("account", account);
-    	startActivity(intent);*/
+    	startActivity(intent);
     }
 }
