@@ -11,6 +11,8 @@ import org.apache.http.client.params.ClientPNames;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import com.google.android.apps.picview.activities.AlbumListActivity;
+
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.accounts.AccountManagerCallback;
@@ -27,20 +29,21 @@ import android.widget.Toast;
 public class AppInfo extends Activity {
 	private static final String TAG = "AppInfo";
 	DefaultHttpClient http_client = new DefaultHttpClient();
-
+	String AUTH_TOKEN_TYPE = "oauth2:https://picasaweb.google.com/data/";
+	String AUTH_TOKEN_TYPE2 = "lh2";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.app_info);
 	}
 
-	@Override
-	protected void onResume() {
+	@Override 
+	protected void onResume() {  
 		super.onResume();
 		Intent intent = getIntent();
 		AccountManager accountManager = AccountManager.get(getApplicationContext());
 		Account account = (Account)intent.getExtras().get("account");
-		accountManager.getAuthToken(account, "ah", false, new GetAuthTokenCallback(), null);
+		accountManager.getAuthToken(account, AUTH_TOKEN_TYPE, true, new GetAuthTokenCallback(), null);
 	}
 	private class GetAuthTokenCallback implements AccountManagerCallback<Bundle> {
 
@@ -54,10 +57,10 @@ public class AppInfo extends Activity {
 					Log.v(TAG, String.format("%s = %s", key, bundle.get(key)));
 				}
 				Intent intent = (Intent)bundle.get(AccountManager.KEY_INTENT);
-				if(intent != null) {
+				if(intent != null) {  
 					// User input required
 					startActivity(intent);
-				} else {
+				} else { 
 					onGetAuthToken(bundle);
 				}
 			} catch (OperationCanceledException e) {
@@ -69,81 +72,17 @@ public class AppInfo extends Activity {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-		}
+			} 
+		} 
 		protected void onGetAuthToken(Bundle bundle) {
 			String auth_token = bundle.getString(AccountManager.KEY_AUTHTOKEN);
 			String name = bundle.getString(AccountManager.KEY_ACCOUNT_NAME);
-			AppManager.getAppManager().setActiveAcccount(new PicasaAccount(name, auth_token));
+		 	AppManager.getAppManager().setActiveAcccount(new PicasaAccount(name, auth_token));
+			Intent intent = new Intent(AppInfo.this, AlbumListActivity.class);
+	        intent.putExtra("accountId", name);
+ 	        intent.putExtra("authKey", auth_token);
+	        AppInfo.this.startActivity(intent);
 			//new GetCookieTask().execute(auth_token);
-		}
-	}
-	private class GetCookieTask extends AsyncTask<String,Boolean,Boolean>{
-
-		private static final String TAG = AppInfo.TAG + "/GetCookieTask";
-		@Override
-		protected Boolean doInBackground(String... tokens) {
-			try {
-				// Don't follow redirects
-				http_client.getParams().setBooleanParameter(ClientPNames.HANDLE_REDIRECTS, false);
-
-				HttpGet http_get = new HttpGet("https://yourapp.appspot.com/_ah/login?continue=http://localhost/&auth=" + tokens[0]);
-				HttpResponse response;
-				response = http_client.execute(http_get);
-				if(response.getStatusLine().getStatusCode() != 302)
-					// Response should be a redirect
-					return false;
-
-				for(Cookie cookie : http_client.getCookieStore().getCookies()) {
-					if(cookie.getName().equals("ACSID"))
-						return true;
-				}
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				http_client.getParams().setBooleanParameter(ClientPNames.HANDLE_REDIRECTS, true);
-			}
-			return false;
-		}
-
-		protected void onPostExecute(Boolean result) {
-			new AuthenticatedRequestTask().execute("http://yourapp.appspot.com/admin/");
-		}
-	}
-	private class AuthenticatedRequestTask extends AsyncTask<String,HttpResponse,HttpResponse>{
-
-		private static final String TAG = AppInfo.TAG + "/AuthenticatedRequestTask";
-		@Override
-		protected HttpResponse doInBackground(String... urls) {
-			try {
-				HttpGet http_get = new HttpGet(urls[0]);
-				return http_client.execute(http_get);
-			} catch (ClientProtocolException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return null;
-		}
-
-		protected void onPostExecute(HttpResponse result) {
-			try {
-				BufferedReader reader = new BufferedReader(new InputStreamReader(result.getEntity().getContent()));
-				String first_line = reader.readLine();
-				Toast.makeText(getApplicationContext(), first_line, Toast.LENGTH_LONG).show();                          
-			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 	}
 
