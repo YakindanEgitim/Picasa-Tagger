@@ -1,4 +1,4 @@
-package com.example.picasa_tagger;
+ package com.example.picasa_tagger;
 
 public class AppManager {
 	PicasaAccount activeAcccount;
@@ -6,13 +6,13 @@ public class AppManager {
 	private AppManager(){
 		
 	}
-	static AppManager getAppManager(){
+	public static AppManager getAppManager(){
 		if(inst == null){
 			inst = new AppManager();
 		}
 		return inst;
 	}
-	public PicasaAccount getActiveAcccount() {
+	public PicasaAccount geActiveAcccount() {
 		return activeAcccount;
 	}
 	public void setActiveAcccount(PicasaAccount activeAcccount) {

@@ -18,6 +18,8 @@ package com.google.android.apps.picview.request;
 
 import java.net.URL;
 
+import com.example.picasa_tagger.PicasaAccount;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -41,7 +43,6 @@ public class AsyncRequestTask extends AsyncTask<Void, Integer, String> {
 
   private CachedWebRequestFetcher fetcher;
   private final String url;
-  private final String args;
   private final RequestCallback callback;
   private final boolean forceFetchFromWeb;
   private final Context context;
@@ -49,12 +50,11 @@ public class AsyncRequestTask extends AsyncTask<Void, Integer, String> {
   private String errorMessage;
   private boolean wasTakenFromDisk = false;
 
-  public AsyncRequestTask(CachedWebRequestFetcher fetcher, String url,String args,
+  public AsyncRequestTask(CachedWebRequestFetcher fetcher, String url,
       boolean forceFetchFromWeb, String loadingMessage, Context context,
       RequestCallback callback) {
     this.fetcher = fetcher;
     this.url = url;
-    this.args = args;
     this.forceFetchFromWeb = forceFetchFromWeb;
     this.context = context;
     this.callback = callback;
@@ -75,7 +75,7 @@ public class AsyncRequestTask extends AsyncTask<Void, Integer, String> {
   @Override
   protected String doInBackground(Void... params) {
     try {
-      CachedResponse<String> cachedResponse = fetcher.cachedFetch(new URL(url), args, forceFetchFromWeb);
+      CachedResponse<String> cachedResponse = fetcher.cachedFetch(new URL(url), forceFetchFromWeb);
       wasTakenFromDisk = (cachedResponse.cacheStatus == CachedResponse.FROM_FILE);
       return cachedResponse.content;
     } catch (Exception e) {
@@ -116,7 +116,7 @@ public class AsyncRequestTask extends AsyncTask<Void, Integer, String> {
    *          differ, we call the callback once again
    */
   private void checkForNewerVersionAsync(final String oldData) {
-    AsyncRequestTask task = new AsyncRequestTask(fetcher, url, args, true, null,
+    AsyncRequestTask task = new AsyncRequestTask(fetcher, url, true, null,
         context, new RequestCallback() {
           @Override
           public void success(String data) {

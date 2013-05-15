@@ -92,8 +92,9 @@ public class AlbumListActivity extends Activity {
 
     // TODO: This is picasa specific.
     final String accountId = getIntent().getExtras().getString("accountId");
+    final String authKey = getIntent().getExtras().getString("authKey");
     if (accountId != null) {
-      doAlbumsRequest(accountId);
+      doAlbumsRequest(accountId, authKey);
     } else {
       showAlbums();
     }
@@ -113,11 +114,17 @@ public class AlbumListActivity extends Activity {
    * 
    * TODO: This is Picasa specific.
    */
-  private void doAlbumsRequest(String userName) {
+  private void doAlbumsRequest(String userName, String authKey) {
     // Use text field value.
     PicasaAlbumsUrl url = new PicasaAlbumsUrl(userName);
+
+    String urlString;
+    if(authKey != null)
+    	urlString = url.getAuthUrl(authKey);
+    else
+    	urlString = url.getUrl();
     AsyncRequestTask request = new AsyncRequestTask(cachedWebRequestFetcher,
-        url.getUrl(), false, "Loading albums...", this,
+    		urlString, false, "Loading albums...", this,
         new RequestCallback() {
           @Override
           public void success(String data) {
