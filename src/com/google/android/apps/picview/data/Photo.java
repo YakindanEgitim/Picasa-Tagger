@@ -24,16 +24,20 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.xml.sax.SAXException;
 
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 import android.util.Xml;
 
 import com.google.android.apps.picview.data.parser.PicasaPhotosSaxHandler;
+import com.google.android.apps.picview.data.parser.PicasaTagSaxHandler;
 
 /**
  * The Photo data object containing all information about a photo.
@@ -51,6 +55,7 @@ public class Photo implements Serializable, Parcelable {
   private String credit;
   private String description;
   private String group;
+  private List<String> oldkeywords;
   private List<String> keywords;
   private String thumbnailUrl; 
   
@@ -231,10 +236,12 @@ public class Photo implements Serializable, Parcelable {
   }
   public void addKeywordsFromString(String keywords) {
 	  this.keywords = new ArrayList<String>();
+	  this.oldkeywords= new ArrayList<String>();
 	  if(dbg)
 			Log.v(TAG, "keywords -> " + keywords);
 	  for(String key: keywords.split(",")){
 		  addKeyword(key);
+		  oldkeywords.add(key);
 	  }
   }
   public void addKeyword(String keywords) {
@@ -248,8 +255,33 @@ public class Photo implements Serializable, Parcelable {
 	  return imageUrl;
   }
 
-public void saveOnServer() {
-	// TODO Auto-generated method stub
-	
-}
+  public void saveOnServer(String album, String username, String authkey, Context ctx) {
+	  TagManager tm = new TagManager(username, authkey, ctx);
+	  tm.addTagStart(this, album, getNewKeywords());
+	  TagManager.deleteTagStart(this, getDeletedKeywords());
+
+  }
+  public List<String> getNewKeywords(){
+	  List<String> newKeywords = new ArrayList();
+	  for(String key: keywords){
+		  if(! oldkeywords.contains(key)){
+			  newKeywords.add(key);
+		  }
+	  }
+	  return newKeywords;
+  }
+
+  public List<String> getDeletedKeywords(){
+	  List<String> deletedKeywords = new ArrayList();
+	  for(String key: oldkeywords){
+		  if(! keywords.contains(key)){
+			  deletedKeywords.add(key);
+		  }
+	  }
+	  return deletedKeywords;
+  }
+  
+
+  
+  
 }

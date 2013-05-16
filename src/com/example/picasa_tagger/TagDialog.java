@@ -2,6 +2,7 @@ package com.example.picasa_tagger;
 
 import java.util.List;
 
+import com.google.android.apps.picview.data.Album;
 import com.google.android.apps.picview.data.Photo;
 
 import android.app.Dialog;
@@ -25,9 +26,14 @@ public class TagDialog extends Dialog{
 	private static final String TAG = "TagDialog";
 	private static final boolean dbg = true;
 	Photo photo;
-
-	public TagDialog(Context context, Photo photo) {
+	String userName;
+	String authkey;
+	String album;
+	public TagDialog(String albumName,String userName,String authkey,Context context, Photo photo) {
 		super(context);
+		this.userName =  userName;
+		this.authkey =  authkey;
+		this.album =  albumName;
 		setContentView(R.layout.tag_dialog);
 		((Button) findViewById(R.id.button_save)).setOnClickListener(new View.OnClickListener(){
 			@Override
@@ -68,7 +74,7 @@ public class TagDialog extends Dialog{
 	public void saveAndExit(){
 		if(dbg)
 			Log.v(TAG, "saveAndExit");
-		photo.saveOnServer();
+		photo.saveOnServer(album, userName, authkey, getContext());
 		this.dismiss();
 	}
 

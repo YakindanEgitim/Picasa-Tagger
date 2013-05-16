@@ -72,6 +72,8 @@ public class PhotoViewActivity extends Activity {
 	private static final String KEY_INDEX = "index";
 	private static final String KEY_PHOTOS = "photos";
 	private static final String KEY_ALBUM_NAME = "albumName";
+	private static final String KEY_USERNAME = "userName";
+	private static final String KEY_AUTHKEY = "authKey";
 
 	private ImageView photoView;
 	private TextView txtPhotoTitle;
@@ -209,8 +211,12 @@ public class PhotoViewActivity extends Activity {
 		case CONTEXT_MENU_TAGS:
 			if(dbg)
 				Log.v(TAG, "CONTEXT_MENU_TAGS clicked");
-			TagDialog tg = new TagDialog(this,photos.get(currentIndex));
+			Bundle bundle = getIntent().getExtras();
+			TagDialog tg = new TagDialog(bundle.getString(KEY_ALBUM_NAME), bundle.getString(KEY_USERNAME),
+					bundle.getString(KEY_AUTHKEY), this,photos.get(currentIndex));
 			tg.show();
+			Log.v(TAG, bundle.getString(KEY_ALBUM_NAME)+ bundle.getString(KEY_USERNAME)+
+					bundle.getString(KEY_AUTHKEY));
 			return true; 
 		}
 		return super.onOptionsItemSelected(item);

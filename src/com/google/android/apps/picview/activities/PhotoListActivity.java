@@ -104,10 +104,13 @@ public class PhotoListActivity extends Activity {
   }
 
   private void loadPhoto(Photo photo) {
+		Bundle bundle = getIntent().getExtras();
     Intent intent = new Intent(this, PhotoViewActivity.class);
     intent.putParcelableArrayListExtra("photos", (ArrayList<Photo>) photos);
     intent.putExtra("index", photos.indexOf(photo));
     intent.putExtra("albumName", albumName);
+    intent.putExtra("userName", bundle.getString("userName"));
+    intent.putExtra("authKey", bundle.getString("authKey"));
     startActivity(intent);
   }
 

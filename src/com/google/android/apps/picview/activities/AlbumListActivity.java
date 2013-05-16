@@ -210,10 +210,13 @@ public class AlbumListActivity extends Activity {
 
   private void showPhotos(String albumTitle, List<Photo> photos) {
     Log.d(TAG, "SHOW PHOTOS()");
+	Bundle bundle = getIntent().getExtras();
     Intent intent = new Intent(this, PhotoListActivity.class);
     intent.putParcelableArrayListExtra("photos", (ArrayList<Photo>) photos);
     intent.putExtra("albumName", albumTitle);
     intent.putExtra("layout", R.layout.photo_list);
+    intent.putExtra("userName", bundle.getString("accountId"));
+    intent.putExtra("authKey", bundle.getString("authKey"));
     startActivity(intent);
   }
 
