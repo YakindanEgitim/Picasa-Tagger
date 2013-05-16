@@ -16,12 +16,14 @@
 
 package com.google.android.apps.picview.activities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Window;
@@ -32,6 +34,7 @@ import android.widget.ListView;
 import com.example.picasa_tagger.R;
 import com.google.android.apps.picview.adapter.MultiColumnImageAdapter.ThumbnailClickListener;
 import com.google.android.apps.picview.adapter.PhotosAdapter;
+import com.google.android.apps.picview.data.Album;
 import com.google.android.apps.picview.data.FileSystemImageCache;
 import com.google.android.apps.picview.data.Photo;
 import com.google.android.apps.picview.request.CachedImageFetcher;
@@ -48,7 +51,7 @@ public class PhotoListActivity extends Activity {
   private ListView mainList;
   private LayoutInflater inflater;
 
-  private String albumName;
+  private Album album;
   private List<Photo> photos;
   private CachedImageFetcher cachedImageFetcher;
 
@@ -62,7 +65,7 @@ public class PhotoListActivity extends Activity {
     setContentView(viewId);
     mainList = (ListView) findViewById(R.id.photolist);
     inflater = LayoutInflater.from(this);
-    albumName = getIntent().getExtras().getString("albumName");
+    album = getIntent().getExtras().getParcelable("album");
     photos = getIntent().getExtras().getParcelableArrayList("photos");
     cachedImageFetcher = new CachedImageFetcher(new FileSystemImageCache());
     initCurrentConfiguration();
@@ -108,7 +111,7 @@ public class PhotoListActivity extends Activity {
     Intent intent = new Intent(this, PhotoViewActivity.class);
     intent.putParcelableArrayListExtra("photos", (ArrayList<Photo>) photos);
     intent.putExtra("index", photos.indexOf(photo));
-    intent.putExtra("albumName", albumName);
+    intent.putExtra("album", ((Parcelable) album));
     intent.putExtra("userName", bundle.getString("userName"));
     intent.putExtra("authKey", bundle.getString("authKey"));
     startActivity(intent);

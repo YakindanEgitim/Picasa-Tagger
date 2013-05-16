@@ -28,12 +28,12 @@ public class TagDialog extends Dialog{
 	Photo photo;
 	String userName;
 	String authkey;
-	String album;
-	public TagDialog(String albumName,String userName,String authkey,Context context, Photo photo) {
+	Album album;
+	public TagDialog(Album album,String userName,String authkey,Context context, Photo photo) {
 		super(context);
 		this.userName =  userName;
 		this.authkey =  authkey;
-		this.album =  albumName;
+		this.album =  album;
 		setContentView(R.layout.tag_dialog);
 		((Button) findViewById(R.id.button_save)).setOnClickListener(new View.OnClickListener(){
 			@Override
@@ -54,7 +54,7 @@ public class TagDialog extends Dialog{
 				((TagAdapter) ((ListView) findViewById(R.id.tags_list)).getAdapter()).addTag(editAble.toString());
 			}
 		});
-		((ListView) findViewById(R.id.tags_list)).setAdapter(new TagAdapter(photo.getKeywords()));
+		((ListView) findViewById(R.id.tags_list)).setAdapter(new TagAdapter(photo));
 
 		DisplayMetrics metrics = context.getResources().getDisplayMetrics();
 		WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
@@ -74,6 +74,7 @@ public class TagDialog extends Dialog{
 	public void saveAndExit(){
 		if(dbg)
 			Log.v(TAG, "saveAndExit");
+		
 		photo.saveOnServer(album, userName, authkey, getContext());
 		this.dismiss();
 	}

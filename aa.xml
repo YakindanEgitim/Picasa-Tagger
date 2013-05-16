@@ -1,53 +1,60 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns:gphoto="http://schemas.google.com/photos/2007"
+<feed xmlns:exif="http://schemas.google.com/photos/exif/2007"
+    xmlns:gphoto="http://schemas.google.com/photos/2007"
     xmlns:media="http://search.yahoo.com/mrss/"
-    xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/"
-    xmlns="http://www.w3.org/2005/Atom" >
+    xmlns:openSearch="http://a9.com/-/spec/opensearch/1.1/"
+    xmlns:gd="http://schemas.google.com/g/2005"
+    xmlns="http://www.w3.org/2005/Atom"
+    gd:etag="W/&quot;DU4HQH0_cCp7ImA9WhBaEEQ.&quot;" >
 
     <id>
-http://picasaweb.google.com/data/feed/api/user/talhakkas%40gmail.com
+https://picasaweb.google.com/data/feed/user/103129729689614933228/albumid/5873042284431343937
     </id>
 
     <updated>
-2013-05-09T19:06:57.080Z
+2013-05-21T00:58:51.348Z
     </updated>
 
     <category
         scheme="http://schemas.google.com/g/2005#kind"
-        term="http://schemas.google.com/photos/2007#user" />
+        term="http://schemas.google.com/photos/2007#album" />
 
-    <title type="text" >
-103129729689614933228
+    <title>
+PreVogue Blogger template - BTemplates_files
     </title>
 
-    <subtitle type="text" />
+    <subtitle />
+
+    <rights>
+public
+    </rights>
 
     <icon>
-http://lh4.ggpht.com/-PZP59eGxa7Y/AAAAAAAAAAI/AAAAAAAAAAA/AJiTUl3x6dc/s64-c/103129729689614933228.jpg
+https://lh5.googleusercontent.com/-NC74Aohwkio/UYE810phAUE/AAAAAAAAAEc/62CpczbG5lw/s160-c/PreVogueBloggerTemplateBTemplates_files.jpg
     </icon>
 
     <link
-        href="http://picasaweb.google.com/data/feed/api/user/103129729689614933228?authkey=aHskQBFElnw"
+        href="https://picasaweb.google.com/data/feed/api/user/103129729689614933228/albumid/5873042284431343937"
         rel="http://schemas.google.com/g/2005#feed"
         type="application/atom+xml" />
 
     <link
-        href="http://picasaweb.google.com/data/feed/api/user/103129729689614933228?tok=QUI1UGxRYmdpU2pPWGxfTGFNYmRScmtRV01BQkpVZ2V2QToxMzY4NjM4OTYyMjU0&amp;authkey=aHskQBFElnw"
-        rel="http://schemas.google.com/g/2005#post"
-        type="application/atom+xml" />
-
-    <link
-        href="https://picasaweb.google.com/103129729689614933228"
+        href="https://picasaweb.google.com/103129729689614933228/PreVogueBloggerTemplateBTemplates_files"
         rel="alternate"
         type="text/html" />
 
     <link
-        href="https://picasaweb.google.com/s/c/bin/slideshow.swf?host=picasaweb.google.com&amp;RGB=0x000000&amp;feed=http%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fapi%2Fuser%2F103129729689614933228%3Falt%3Drss%26authkey%3DaHskQBFElnw"
+        href="https://picasaweb.google.com/s/c/bin/slideshow.swf?host=picasaweb.google.com&amp;RGB=0x000000&amp;feed=https%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fapi%2Fuser%2F103129729689614933228%2Falbumid%2F5873042284431343937%3Falt%3Drss"
         rel="http://schemas.google.com/photos/2007#slideshow"
         type="application/x-shockwave-flash" />
 
     <link
-        href="http://picasaweb.google.com/data/feed/api/user/103129729689614933228?start-index=1&amp;max-results=1000&amp;authkey=AHES6ZQPDnh_mEV0O1oht1jxegwYOCogvEvIE1Pw9GRrXMU&amp;access=private"
+        href="https://picasaweb.google.com/lh/reportAbuse?uname=103129729689614933228&amp;aid=5873042284431343937"
+        rel="http://schemas.google.com/photos/2007#report"
+        type="text/html" />
+
+    <link
+        href="https://picasaweb.google.com/data/feed/api/user/103129729689614933228/albumid/5873042284431343937?start-index=1&amp;max-results=1000"
         rel="self"
         type="application/atom+xml" />
 
@@ -69,7 +76,7 @@ Picasaweb
     </generator>
 
     <openSearch:totalResults>
-1
+8
     </openSearch:totalResults>
 
     <openSearch:startIndex>
@@ -80,6 +87,28 @@ Picasaweb
 1000
     </openSearch:itemsPerPage>
 
+    <gphoto:id>
+5873042284431343937
+    </gphoto:id>
+
+    <gphoto:name>
+PreVogueBloggerTemplateBTemplates_files
+    </gphoto:name>
+
+    <gphoto:location />
+
+    <gphoto:access>
+public
+    </gphoto:access>
+
+    <gphoto:timestamp>
+1225378206000
+    </gphoto:timestamp>
+
+    <gphoto:numphotos>
+8
+    </gphoto:numphotos>
+
     <gphoto:user>
 103129729689614933228
     </gphoto:user>
@@ -88,160 +117,64 @@ Picasaweb
 talha akkaslar
     </gphoto:nickname>
 
-    <gphoto:thumbnail>
-http://lh4.ggpht.com/-PZP59eGxa7Y/AAAAAAAAAAI/AAAAAAAAAAA/AJiTUl3x6dc/s64-c/103129729689614933228.jpg
-    </gphoto:thumbnail>
+    <gphoto:allowPrints>
+true
+    </gphoto:allowPrints>
 
-    <gphoto:quotalimit>
-5368709120
-    </gphoto:quotalimit>
+    <gphoto:allowDownloads>
+true
+    </gphoto:allowDownloads>
 
-    <gphoto:quotacurrent>
-15809055
-    </gphoto:quotacurrent>
-
-    <gphoto:maxPhotosPerAlbum>
-1000
-    </gphoto:maxPhotosPerAlbum>
-
-    <entry>
+    <entry gd:etag="&quot;YDkqeyI.&quot;" >
 
         <id>
-http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873034892155669553
+https://picasaweb.google.com/data/entry/user/103129729689614933228/albumid/5873042284431343937/photoid/5873042299578774386
         </id>
 
         <published>
-2013-05-01T15:34:54.000Z
+2013-05-01T16:03:38.000Z
         </published>
 
         <updated>
-2013-05-01T15:43:18.993Z
+2013-05-09T18:55:51.733Z
         </updated>
 
         <category
             scheme="http://schemas.google.com/g/2005#kind"
-            term="http://schemas.google.com/photos/2007#album" />
+            term="http://schemas.google.com/photos/2007#photo" />
 
-        <title type="text" >
-01 05 2013
+        <title>
+popocatepetl-iztaccihuatl.jpg
         </title>
 
-        <summary type="text" />
+        <summary />
 
-        <rights type="text" >
-private
-        </rights>
+        <content
+            src="https://lh4.googleusercontent.com/-XHvNTAJ7JQo/UYE82tE8c3I/AAAAAAAAAC4/1dQrk_5NaAc/popocatepetl-iztaccihuatl.jpg"
+            type="image/jpeg" />
 
         <link
-            href="http://picasaweb.google.com/data/feed/api/user/103129729689614933228/albumid/5873034892155669553?authkey=Gv1sRgCLqArO2YvL7t6AE"
+            href="https://picasaweb.google.com/data/feed/api/user/103129729689614933228/albumid/5873042284431343937/photoid/5873042299578774386"
             rel="http://schemas.google.com/g/2005#feed"
             type="application/atom+xml" />
 
         <link
-            href="https://picasaweb.google.com/103129729689614933228/01052013?authkey=Gv1sRgCLqArO2YvL7t6AE"
+            href="https://picasaweb.google.com/103129729689614933228/PreVogueBloggerTemplateBTemplates_files#5873042299578774386"
             rel="alternate"
             type="text/html" />
 
         <link
-            href="http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873034892155669553?authkey=Gv1sRgCLqArO2YvL7t6AE"
+            href="https://picasaweb.google.com/lh/photo/4YaNwwAGVknIEmMaxZrdudMTjNZETYmyPJy0liipFm0"
+            rel="http://schemas.google.com/photos/2007#canonical"
+            type="text/html" />
+
+        <link
+            href="https://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873042284431343937/photoid/5873042299578774386"
             rel="self"
             type="application/atom+xml" />
 
         <link
-            href="http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873034892155669553/5?tok=QUI1UGxRWlpZUDJ3SWZZWkdMOHg1UkdmNmJDODhwTnNIQToxMzY4NjM4OTYyMjU0&amp;authkey=Gv1sRgCLqArO2YvL7t6AE"
-            rel="edit"
-            type="application/atom+xml" />
-
-        <link
-            href="http://picasaweb.google.com/data/entry/api/user/103129729689614933228/albumid/5873034892155669553/acl?authkey=Gv1sRgCLqArO2YvL7t6AE"
-            rel="http://schemas.google.com/acl/2007#accessControlList"
-            type="application/atom+xml" />
-
-        <author>
-
-            <name>
-talha akkaslar
-            </name>
-
-            <uri>
-https://picasaweb.google.com/103129729689614933228
-            </uri>
-        </author>
-
-        <gphoto:id>
-5873034892155669553
-        </gphoto:id>
-
-        <gphoto:name>
-01052013
-        </gphoto:name>
-
-        <gphoto:location />
-
-        <gphoto:access>
-private
-        </gphoto:access>
-
-        <gphoto:timestamp>
-1367422494000
-        </gphoto:timestamp>
-
-        <gphoto:numphotos>
-1
-        </gphoto:numphotos>
-
-        <gphoto:numphotosremaining>
-999
-        </gphoto:numphotosremaining>
-
-        <gphoto:bytesUsed>
-256568
-        </gphoto:bytesUsed>
-
-        <gphoto:user>
-103129729689614933228
-        </gphoto:user>
-
-        <gphoto:nickname>
-talha akkaslar
-        </gphoto:nickname>
-
-        <gphoto:commentingEnabled>
-true
-        </gphoto:commentingEnabled>
-
-        <gphoto:commentCount>
-0
-        </gphoto:commentCount>
-
-        <gphoto:albumType>
-Buzz
-        </gphoto:albumType>
-
-        <media:group>
-
-            <media:content
-                medium="image"
-                type="image/jpeg"
-                url="http://lh4.ggpht.com/-Ic1lIWkib1A/UYE2HiRpzDE/AAAAAAAAAEE/LBkZpJujtLI/01052013.jpg" />
-
-            <media:credit>
-talha akkaslar
-            </media:credit>
-
-            <media:description type="plain" />
-
-            <media:keywords />
-
-            <media:thumbnail
-                height="160"
-                url="http://lh4.ggpht.com/-Ic1lIWkib1A/UYE2HiRpzDE/AAAAAAAAAEE/LBkZpJujtLI/s160-c/01052013.jpg"
-                width="160" />
-
-            <media:title type="plain" >
-01 05 2013
-            </media:title>
-        </media:group>
-    </entry>
-
-</feed>
+            hre=""
+            rel="http://schemas.google.com/photos/2007#report"
+            type="text/html" >
+        </link>

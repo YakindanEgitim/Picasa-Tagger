@@ -12,7 +12,7 @@ public class PicasaTagsUrl implements UrlProvider {
 	public PicasaTagsUrl(String user) {
 		this.user = user; 
 	}
-
+ 
 	@Override
 	public String getUrl() {
 		return "http://" + BASE_URL + user + "?kind=tag";
@@ -22,8 +22,8 @@ public class PicasaTagsUrl implements UrlProvider {
 	public String getAuthUrl(String authKey) {
 		return String.format("https://%s?kind=tag&access_token=%s&access=all", BASE_URL + user,authKey);
 	}
-	public String getAddTagUrl(String album, Photo photo, String authKey) {
-		return String.format(BASE_ADDTAG_URL + "?kind=tag&access_token=%s&access=all",  user, album, photo, authKey);
+	public String getAddTagUrl(Album album, Photo photo, String authKey) {
+		return String.format(BASE_ADDTAG_URL + "?access_token=%s",  user, album.getId(), photo.getID(), authKey);
 	}
 }
 

@@ -24,6 +24,7 @@ import com.google.android.apps.picview.request.PicasaTagsUrl;
 
 public class TagManager {
 	private static final String TAG = "TagManager";
+	private static final boolean dbg = true;
 	private String userName;
 	private String authKey;
 	private Context ctx;
@@ -78,12 +79,13 @@ public class TagManager {
 		request.execute();
 	}
 
-	private void doAddTagRequest(String tag, String album, Photo photo) {
+	private void doAddTagRequest(String tag, Album album, Photo photo) {
 		// Use text field value.
 		PicasaTagsUrl url = new PicasaTagsUrl(userName);
 
-	    String urlString;
-	    urlString = url.getAddTagUrl(album, photo, authKey);
+	    String urlString = url.getAddTagUrl(album, photo, authKey);
+		if(dbg)
+			Log.v(TAG, "tags url" + urlString);
 	    String content = PicasaXmlBuilder.addTagXmlString(tag);
 	    AsyncPutTask request = new AsyncPutTask(cachedWebPutRequestFetcher,
 	    		urlString,  content,false, "Loading albums...",  ctx,
@@ -100,7 +102,7 @@ public class TagManager {
 	    request.execute();
 	  }
 
-	public void addTagStart(Photo photo, String album, List<String> newKeywords) {
+	public void addTagStart(Photo photo, Album album, List<String> newKeywords) {
 		for(String tag: newKeywords){
 			doAddTagRequest(tag, album, photo);
 		}

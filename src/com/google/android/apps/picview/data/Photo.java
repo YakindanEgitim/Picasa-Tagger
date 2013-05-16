@@ -47,8 +47,9 @@ import com.google.android.apps.picview.data.parser.PicasaTagSaxHandler;
 public class Photo implements Serializable, Parcelable {
 	private static final String TAG = "Photo";
 	private static final boolean dbg = true;
-  private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 12L;
 
+  private String id;
   private String name;
   private String imageUrl; 
   private String title;
@@ -255,7 +256,10 @@ public class Photo implements Serializable, Parcelable {
 	  return imageUrl;
   }
 
-  public void saveOnServer(String album, String username, String authkey, Context ctx) {
+  public void saveOnServer(Album album, String username, String authkey, Context ctx) {
+
+		if(dbg)
+			Log.v(TAG, "saveOnServer new tag count :" + getNewKeywords().size());
 	  TagManager tm = new TagManager(username, authkey, ctx);
 	  tm.addTagStart(this, album, getNewKeywords());
 	  TagManager.deleteTagStart(this, getDeletedKeywords());
@@ -279,6 +283,15 @@ public class Photo implements Serializable, Parcelable {
 		  }
 	  }
 	  return deletedKeywords;
+  }
+
+  public void setID(String string) {
+	  this.id = string;
+
+  } 
+  public String getID() {
+	  return this.id;
+
   }
   
 

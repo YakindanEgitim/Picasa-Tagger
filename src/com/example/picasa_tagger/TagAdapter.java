@@ -2,6 +2,8 @@ package com.example.picasa_tagger;
 
 import java.util.List;
 
+import com.google.android.apps.picview.data.Photo;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,19 +16,19 @@ import android.widget.TextView;
 
 public class TagAdapter extends BaseAdapter {
 
-	private List<String> tags;
-	TagAdapter(List<String> tags){
-		this.tags = tags;
+	private Photo photo;
+	TagAdapter(Photo photo){
+		this.photo = photo;
 
 	}
 	@Override
 	public int getCount() {
-		return tags.size();
+		return photo.getKeywords().size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return tags.get(position);
+		return photo.getKeywords().get(position);
 	}
 
 	@Override
@@ -41,18 +43,18 @@ public class TagAdapter extends BaseAdapter {
 			view = inflater.inflate(R.layout.tag_list_item, parent, false);
 		}
 		TextView textView = (TextView) view.findViewById(R.id.tag_text);
-		textView.setText(tags.get(position));
+		textView.setText(photo.getKeywords().get(position));
 		CheckBox checkbox = (CheckBox) view.findViewById(R.id.check_box);
 		checkbox.setChecked(true);
 		checkbox.setOnCheckedChangeListener(new TagCheckedChangeListener(position));
 		return view;
 	}
 	public void addTag(String str){
-		tags.add(str);
+		photo.getKeywords().add(str);
 		this.notifyDataSetChanged();
 	}
 	public void removeTag(int pos){
-		tags.remove(pos);
+		photo.getKeywords().remove(pos);
 		this.notifyDataSetChanged();
 	}
 

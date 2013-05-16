@@ -54,9 +54,7 @@ public class CachedWebPutRequestFetcher {
 	      // If it is also not found in the file system cache, or fetching
 	      // from cache was intentionally skipped, try to fetch it
 	      // from the network.
-	      if (response) {
 	    	  response = putToWeb(url, data);
-	      }
 	      
 	    }
 	  }
@@ -78,20 +76,22 @@ public class CachedWebPutRequestFetcher {
 	    HttpsURLConnection conn = null;
 	    try {
 	    	conn = (HttpsURLConnection) url.openConnection();
-	    	conn.setRequestMethod("PUT");
+	    	conn.setRequestMethod("POST");
 	    	conn.setUseCaches(false);
 	    	conn.setReadTimeout(30000); // 30 seconds. 
-	    	conn.setDoInput(true);
 	    	conn.addRequestProperty("GData-Version", "2");
 	    	conn.addRequestProperty("Content-Length", String.valueOf(data.length()));
 	    	conn.addRequestProperty("MIME-version", "1.0");
 	    	conn.addRequestProperty("Content-Type", "application/atom+xml");
 	    	conn.addRequestProperty("Encoding", "UTF-8l");
+
+	    	conn.setDoInput(true);
 	    	conn.setDoOutput(true);
 	    	conn.connect();
 	    	OutputStream out = conn.getOutputStream();
-
-	    	return writeStringFromStream(out,data.getBytes("UTF-8"));
+	    	boolean val = writeStringFromStream(out,data.getBytes("UTF-8"));
+	    	Log.v(TAG, readStringFromStream(conn.getInputStream()));
+	    	return val;
 	    } catch (Exception e) {
 	    Log.v(TAG,readStringFromStream(conn.getErrorStream()));
 	      e.printStackTrace();

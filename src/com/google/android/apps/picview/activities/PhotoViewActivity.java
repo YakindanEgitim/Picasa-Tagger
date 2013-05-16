@@ -38,6 +38,7 @@ import android.widget.TextView;
 import com.example.picasa_tagger.R;
 import com.example.picasa_tagger.TagDialog;
 import com.google.android.apps.picview.adapter.AccountsAdapter;
+import com.google.android.apps.picview.data.Album;
 import com.google.android.apps.picview.data.FileSystemImageCache;
 import com.google.android.apps.picview.data.Photo;
 import com.google.android.apps.picview.request.CachedImageFetcher;
@@ -72,6 +73,7 @@ public class PhotoViewActivity extends Activity {
 	private static final String KEY_INDEX = "index";
 	private static final String KEY_PHOTOS = "photos";
 	private static final String KEY_ALBUM_NAME = "albumName";
+	private static final String KEY_ALBUM = "album";
 	private static final String KEY_USERNAME = "userName";
 	private static final String KEY_AUTHKEY = "authKey";
 
@@ -212,7 +214,7 @@ public class PhotoViewActivity extends Activity {
 			if(dbg)
 				Log.v(TAG, "CONTEXT_MENU_TAGS clicked");
 			Bundle bundle = getIntent().getExtras();
-			TagDialog tg = new TagDialog(bundle.getString(KEY_ALBUM_NAME), bundle.getString(KEY_USERNAME),
+			TagDialog tg = new TagDialog((Album) bundle.getSerializable(KEY_ALBUM), bundle.getString(KEY_USERNAME),
 					bundle.getString(KEY_AUTHKEY), this,photos.get(currentIndex));
 			tg.show();
 			Log.v(TAG, bundle.getString(KEY_ALBUM_NAME)+ bundle.getString(KEY_USERNAME)+

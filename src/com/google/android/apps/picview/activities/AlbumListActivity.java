@@ -25,6 +25,7 @@ import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.WindowManager;
@@ -142,14 +143,14 @@ public class AlbumListActivity extends Activity {
     request.execute();
   }
 
-  private void doPhotosRequest(final String albumTitle, String gdataUrl) {
+  private void doPhotosRequest(final Album album, String gdataUrl) {
     AsyncRequestTask request = new AsyncRequestTask(cachedWebRequestFetcher,
         gdataUrl, false, "Loading photos...", this,
         new RequestCallback() {
 
           @Override
           public void success(String data) {
-            showPhotos(albumTitle, Photo.parseFromPicasaXml(data));
+            showPhotos(album, Photo.parseFromPicasaXml(data));
           }
 
           @Override
@@ -197,7 +198,7 @@ public class AlbumListActivity extends Activity {
       public void thumbnailClicked(Album album) {
     	  if(dbg)
     	  Log.v(TAG, album.getGdataUrl());
-        doPhotosRequest(album.getName(), album.getGdataUrl());
+        doPhotosRequest(album, album.getGdataUrl());
       }
     };
     mainList.setAdapter(new AlbumsAdapter(wrap(albums), inflater, foo,
@@ -208,12 +209,12 @@ public class AlbumListActivity extends Activity {
     mainList.invalidateViews();
   }
 
-  private void showPhotos(String albumTitle, List<Photo> photos) {
+  private void showPhotos(Album album, List<Photo> photos) {
     Log.d(TAG, "SHOW PHOTOS()");
 	Bundle bundle = getIntent().getExtras();
     Intent intent = new Intent(this, PhotoListActivity.class);
     intent.putParcelableArrayListExtra("photos", (ArrayList<Photo>) photos);
-    intent.putExtra("albumName", albumTitle);
+    intent.putExtra("album", ((Parcelable)album));
     intent.putExtra("layout", R.layout.photo_list);
     intent.putExtra("userName", bundle.getString("accountId"));
     intent.putExtra("authKey", bundle.getString("authKey"));

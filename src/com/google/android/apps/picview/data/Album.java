@@ -41,14 +41,14 @@ import com.google.android.apps.picview.data.parser.PicasaAlbumsSaxHandler;
  * @author haeberling@google.com (Sascha Haeberling)
  */
 public class Album implements Serializable, Parcelable {
-  private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 11L;
 
-  public static final Parcelable.Creator<Photo> CREATOR = new Parcelable.Creator<Photo>() {
-    public Photo createFromParcel(Parcel in) {
+  public static final Parcelable.Creator<Album> CREATOR = new Parcelable.Creator<Album>() {
+    public Album createFromParcel(Parcel in) {
       try {
         ObjectInputStream inputStream = new ObjectInputStream(
             new ByteArrayInputStream(in.createByteArray()));
-        return (Photo) inputStream.readObject();
+        return (Album) inputStream.readObject();
       } catch (StreamCorruptedException e) {
         e.printStackTrace();
       } catch (IOException e) {
@@ -59,8 +59,8 @@ public class Album implements Serializable, Parcelable {
       return null;
     }
 
-    public Photo[] newArray(int size) {
-      return new Photo[size];
+    public Album[] newArray(int size) {
+      return new Album[size];
     }
   };
 
@@ -68,6 +68,7 @@ public class Album implements Serializable, Parcelable {
   private String name;
   private String thumbnailUrl;
   private String gdataUrl;
+  private String id;
 
   /**
    * Parses Picasa albums XML and returns a list of albums.
@@ -131,4 +132,12 @@ public class Album implements Serializable, Parcelable {
   public void writeToParcel(Parcel dest, int flags) {
     dest.writeByteArray(convertToBytes());
   }
+
+public String getId() {
+	return id;
+}
+
+public void setId(String id) {
+	this.id = id;
+}
 }

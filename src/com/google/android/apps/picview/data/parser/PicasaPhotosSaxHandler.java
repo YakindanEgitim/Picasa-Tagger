@@ -38,13 +38,14 @@ public class PicasaPhotosSaxHandler extends DefaultHandler {
 	private static final boolean dbg = true;
 	private List<Photo> albums = new ArrayList<Photo>();
 	private Photo currentPhoto;
-	private List<String> elementNames = Arrays.asList(new String[]{"content", "title", "credit", "description", "group", "keywords", "thumbnail","name"});
+	private List<String> elementNames = Arrays.asList(new String[]{"content", "title", "credit", "description", "group", "keywords", "thumbnail","name", "id"});
 	private int currentElement = -1;
 	private StringBuilder nameBuilder = new StringBuilder();
 	private StringBuilder titleBuilder = new StringBuilder();
 	private StringBuilder creditBuilder = new StringBuilder();
 	private StringBuilder descriptionBuilder = new StringBuilder();
 	private StringBuilder keywordsBuilder = new StringBuilder();
+	private StringBuilder idBuilder = new StringBuilder();
 
 
 	public List<Photo> getPhotos() {
@@ -60,7 +61,7 @@ public class PicasaPhotosSaxHandler extends DefaultHandler {
 				Log.v(TAG, "Current index -> " + currentElement + "  " + elementNames.get(currentElement) + text);
 			else
 				Log.v(TAG, "Current text " + text +  currentElement);
-		
+
 		if(currentElement == elementNames.indexOf("content")){
 
 		}else if(currentElement == elementNames.indexOf("title")){
@@ -87,7 +88,9 @@ public class PicasaPhotosSaxHandler extends DefaultHandler {
 
 		}else if(currentElement == elementNames.indexOf("thumbnail")){
 
-		}else{
+		}else if(currentElement == elementNames.indexOf("id")){
+			idBuilder.append(ch, start, length);
+		}else if(currentElement == elementNames.indexOf("name")){
 			nameBuilder.append(ch, start, length);		
 		}
 	}
@@ -99,21 +102,29 @@ public class PicasaPhotosSaxHandler extends DefaultHandler {
 		} else if (localName.equals("title")) {
 			if (currentPhoto != null) {
 				currentPhoto.setName(nameBuilder.toString());
+				nameBuilder = new StringBuilder();
 				currentPhoto.setTitle(titleBuilder.toString());
+				titleBuilder = new StringBuilder();
 				currentPhoto.setCredit(creditBuilder.toString());
+				creditBuilder = new StringBuilder();
 				currentPhoto.setDescription(descriptionBuilder.toString());
+				descriptionBuilder = new StringBuilder();
 				currentPhoto.setKeywordsFromString(keywordsBuilder.toString());
+				keywordsBuilder = new StringBuilder();
+				currentPhoto.setID(idBuilder.toString());
+				idBuilder = new StringBuilder();
 			}
 		}
 		nameBuilder.setLength(0);
-		currentElement = -1;
 	}
-
+ 
 	@Override
 	public void startElement(String uri, String localName, String qName,
 			Attributes attributes) throws SAXException {
+		currentElement = elementNames.indexOf(localName);
+		
 		if(dbg)
-		Log.v(TAG, "startElement " + currentElement + localName);
+			Log.v(TAG, "startElement " + currentElement + localName);
 		if (localName.equals("entry")) {
 			currentPhoto = new Photo();
 		} else {
@@ -126,20 +137,6 @@ public class PicasaPhotosSaxHandler extends DefaultHandler {
 					if(dbg)
 						Log.v(TAG, "thumbnail -> " + thumbnail);
 					currentPhoto.setThumbnailUrl(thumbnail);
-				} else if (localName.equals("title")) {
-					currentElement = elementNames.indexOf("title");
-					
-				} else if (localName.equals("credit")) {
-					currentElement = elementNames.indexOf("credit");
-					
-				}else if (localName.equals("description")) {
-					currentElement = elementNames.indexOf("description");
-					
-				}else if (localName.equals("group")) {
-					currentElement = elementNames.indexOf("group");
-					
-				}else if (localName.equals("keywords")) {
-					currentElement = elementNames.indexOf("keywords");
 				}else if (localName.equals("content")) {
 					currentElement = elementNames.indexOf("content");
 			          String image = attributes.getValue("", "url");
