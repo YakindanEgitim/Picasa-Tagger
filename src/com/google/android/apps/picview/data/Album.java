@@ -76,6 +76,7 @@ public class Album implements Serializable, Parcelable {
   public static List<Album> parseFromPicasaXml(String xmlStr) {
     PicasaAlbumsSaxHandler handler = new PicasaAlbumsSaxHandler();
     try {
+    	
       Xml.parse(xmlStr, handler);
       return handler.getAlbums();
     } catch (SAXException e) {

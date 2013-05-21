@@ -35,7 +35,7 @@ import com.google.android.apps.picview.data.Photo;
  */
 public class PicasaPhotosSaxHandler extends DefaultHandler {
 	private static final String TAG = "PicasaPhotosSaxHandler";
-	private static final boolean dbg = true;
+	private static final boolean dbg = !true;
 	private List<Photo> albums = new ArrayList<Photo>();
 	private Photo currentPhoto;
 	private List<String> elementNames = Arrays.asList(new String[]{"content", "title", "credit", "description", "group", "keywords", "thumbnail","name", "id"});

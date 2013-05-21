@@ -2,8 +2,10 @@ package com.google.android.apps.picview.data;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 
 import org.xml.sax.SAXException;
 
@@ -30,7 +32,7 @@ public class TagManager {
 	private Context ctx;
 
 	private static Map<String, String> tags = null;
-	private static Map<String, Photo> deleteQeue = new HashMap<String, Photo>();
+	private static Queue<DeleteTagRequest>deleteQeue = new LinkedList<DeleteTagRequest>();
 	private static CachedWebRequestFetcher cachedWebRequestFetcher = new CachedWebRequestFetcher(new FileSystemWebResponseCache());
 	private static CachedWebPutRequestFetcher cachedWebPutRequestFetcher = new CachedWebPutRequestFetcher();
 	public static Map<String, String> parseTagFromPicasaXml(String xmlStr) {
@@ -54,31 +56,32 @@ public class TagManager {
 		this.authKey = authKey;
 		this.ctx = ctx;
 	}
-	private void doTagsRequest() {
-		// Use text field value.
-		PicasaTagsUrl url = new PicasaTagsUrl(userName);
+	
 
-		String urlString;
-		if(authKey != null)
-			urlString = url.getAuthUrl(authKey);
-		else
-			urlString = url.getUrl();
-		AsyncRequestTask request = new AsyncRequestTask(cachedWebRequestFetcher,
-				urlString, false, "Loading albums...",  ctx,
-				new RequestCallback() {
-			@Override
-			public void success(String data) {
-				tags = TagManager.parseTagFromPicasaXml(data);
-				startDeleteTags();
-			}
+	
 
-			@Override
-			public void error(String message) {
-			}
-		});
-		request.execute();
+	public void addTagStart(Photo photo, Album album, List<String> newKeywords) {
+		for(String tag: newKeywords){
+			doAddTagRequest(tag, album, photo);
+		}
+		
 	}
-
+	public  void deleteTagStart(Photo photo, Album album, List<String> deletedKeywords) {
+		for(String key: deletedKeywords){
+			deleteQeue.add(new DeleteTagRequest(album ,photo ,key));
+		}
+		startDeleteTags();
+	}
+	private void startDeleteTags() {
+		if(tags == null){
+			doAllTagRequest();
+		}else{
+			for(DeleteTagRequest req :deleteQeue){
+				doDeleteTagRequest(req.getTag(), req.getAlbum(), req.getPhoto());
+			}
+		} 
+		
+	}
 	private void doAddTagRequest(String tag, Album album, Photo photo) {
 		// Use text field value.
 		PicasaTagsUrl url = new PicasaTagsUrl(userName);
@@ -88,36 +91,64 @@ public class TagManager {
 			Log.v(TAG, "tags url" + urlString);
 	    String content = PicasaXmlBuilder.addTagXmlString(tag);
 	    AsyncPutTask request = new AsyncPutTask(cachedWebPutRequestFetcher,
-	    		urlString,  content,false, "Loading albums...",  ctx,
+	    		urlString,  content, "POST", false, "Loading albums...",  ctx,
 	        new RequestCallback() {
 	          @Override
 	          public void success(String data) {
-	        	  Log.v(TAG,"Success");
+	        	  Log.v(TAG,"Success doAddTagRequest");
 	          }
+
+	          @Override
+	          public void error(String message) { 
+	          }
+	        });
+	    request.execute();
+	  }
+	private void doDeleteTagRequest(String tag, Album album, Photo photo) {
+		PicasaTagsUrl url = new PicasaTagsUrl(userName);
+
+	    String urlString = url.getDeleteUrl(tags.get(tag),album, photo, authKey);
+		if(dbg)
+			Log.v(TAG, "tags url " + urlString);
+	    String content = PicasaXmlBuilder.addTagXmlString(tag);
+	    AsyncPutTask request = new AsyncPutTask(cachedWebPutRequestFetcher,
+	    		urlString,  content, "DELETE", false, "Loading albums...",  ctx,
+	        new RequestCallback() {
+	          @Override
+	          public void success(String data) {
+	        	  Log.v(TAG,"Success doDeleteTagRequest");
+	          } 
 
 	          @Override
 	          public void error(String message) {
 	          }
 	        });
 	    request.execute();
-	  }
+	}
+	private void doAllTagRequest() {
+		// Use text field value.
+		PicasaTagsUrl url = new PicasaTagsUrl(userName);
 
-	public void addTagStart(Photo photo, Album album, List<String> newKeywords) {
-		for(String tag: newKeywords){
-			doAddTagRequest(tag, album, photo);
-		}
-		
-	}
-	public static void deleteTagStart(Photo photo, List<String> deletedKeywords) {
-		for(String key: deletedKeywords){
-			deleteQeue.put(key, photo);
-		}
-		startDeleteTags();
-	}
-	private static void startDeleteTags() {
-		if(tags == null){
-		}
-		
-	}
+	     String urlString = url.getAuthUrl(authKey);
+		if(dbg)
+			Log.v(TAG, "tags url" + urlString);
+	    AsyncRequestTask request = new AsyncRequestTask(cachedWebRequestFetcher,
+	    		urlString,   true,  null, ctx,
+	        new RequestCallback() {
+	          @Override
+	          public void success(String data) {
+	        	  tags = parseTagFromPicasaXml(data);
+	        	  startDeleteTags();
+	        	  Log.v(TAG,"Success doAllTagRequest");
+	          }
+ 
+	          @Override
+	          public void error(String message) {
+
+	        	  Log.v(TAG,"doAllTagRequest error");
+	          }
+	        });
+	    request.execute();
+	  }
 
 }

@@ -17,13 +17,17 @@ public class PicasaTagsUrl implements UrlProvider {
 	public String getUrl() {
 		return "http://" + BASE_URL + user + "?kind=tag";
 	}
-
+ 
 	@Override
 	public String getAuthUrl(String authKey) {
 		return String.format("https://%s?kind=tag&access_token=%s&access=all", BASE_URL + user,authKey);
 	}
 	public String getAddTagUrl(Album album, Photo photo, String authKey) {
 		return String.format(BASE_ADDTAG_URL + "?access_token=%s",  user, album.getId(), photo.getID(), authKey);
+	}
+	
+	public String getDeleteUrl(String tagId, Album album, Photo photo, String authKey) {
+		return String.format("https://"+BASE_ADDTAG_URL+"/tag/%s?kind=tag&access_token=%s",  user, album.getId(), photo.getID(), tagId, authKey);
 	}
 }
 

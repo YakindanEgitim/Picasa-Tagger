@@ -42,7 +42,7 @@ public class CachedWebPutRequestFetcher {
 	   *          whether the content should be fetched from the web, regardless of
 	   *          whether it is present in any of the caches
 	   */
-	  public void cachedFetch(URL url, String data, boolean forceFetchFromWeb) {
+	  public void cachedFetch(URL url, String data, String method,boolean forceFetchFromWeb) {
 
 	    // Make sure we have a URL object that we can synchronize on.
 	    url = getSynchronizableInstance(url);
@@ -54,7 +54,10 @@ public class CachedWebPutRequestFetcher {
 	      // If it is also not found in the file system cache, or fetching
 	      // from cache was intentionally skipped, try to fetch it
 	      // from the network.
-	    	  response = putToWeb(url, data);
+	      if(method.compareTo("DELETE") == 0 )
+	    	  response = deleteToWeb(url);
+	      else
+	    	  response = putToWeb(url, data, method);
 	      
 	    }
 	  }
@@ -66,17 +69,37 @@ public class CachedWebPutRequestFetcher {
 	  public boolean isCached(URL url) {
 	    return cache.containsKey(url);
 	  }
-
+	  public boolean deleteToWeb(URL url) {
+		  
+		    Log.d(TAG, "Fetching from web: " + url.toString());
+		    HttpsURLConnection conn = null;
+		    try {
+		    	conn = (HttpsURLConnection) url.openConnection();
+		    	conn.setRequestMethod("DELETE");
+		    	conn.setUseCaches(false);
+		    	conn.setReadTimeout(30000); // 30 seconds. 
+		    	conn.addRequestProperty("GData-Version", "2");
+		    	conn.addRequestProperty("MIME-version", "1.0");
+		    	conn.addRequestProperty("Content-Type", "application/atom+xml");
+		    	conn.connect();
+		    	
+		    	return readStringFromStream(conn.getInputStream()) != null;
+		    } catch (Exception e) {
+		    Log.v(TAG,readStringFromStream(conn.getErrorStream()));
+		      e.printStackTrace();
+		    }
+		    return false;
+		  }
 	  /** 
 	   * Fetches the given URL from the web.
 	   */
-	  public boolean putToWeb(URL url, String data) {
+	  public boolean putToWeb(URL url, String data, String method) {
 		  
 	    Log.d(TAG, "Fetching from web: " + url.toString());
 	    HttpsURLConnection conn = null;
 	    try {
 	    	conn = (HttpsURLConnection) url.openConnection();
-	    	conn.setRequestMethod("POST");
+	    	conn.setRequestMethod(method);
 	    	conn.setUseCaches(false);
 	    	conn.setReadTimeout(30000); // 30 seconds. 
 	    	conn.addRequestProperty("GData-Version", "2");
@@ -84,7 +107,6 @@ public class CachedWebPutRequestFetcher {
 	    	conn.addRequestProperty("MIME-version", "1.0");
 	    	conn.addRequestProperty("Content-Type", "application/atom+xml");
 	    	conn.addRequestProperty("Encoding", "UTF-8l");
-
 	    	conn.setDoInput(true);
 	    	conn.setDoOutput(true);
 	    	conn.connect();

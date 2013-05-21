@@ -43,25 +43,21 @@ public class AsyncPutTask extends AsyncTask<Void, Integer, String> {
 	private final String url;
 	private final com.google.android.apps.picview.request.AsyncRequestTask.RequestCallback callback;
 	private final boolean forceFetchFromWeb;
-	private final Context context;
 	private ProgressDialog progressDialog = null;
 	private String errorMessage;
 	private String data;
+	private String method;
 
-	public AsyncPutTask(CachedWebPutRequestFetcher cachedPutRequestFetcher, String url, String content,
-			boolean forceFetchFromWeb, String loadingMessage, Context context,
+	public AsyncPutTask(CachedWebPutRequestFetcher cachedPutRequestFetcher, String url, String content,String method,
+			boolean forceFetchFromWeb, String loadingMessage, Context context, 
 			com.google.android.apps.picview.request.AsyncRequestTask.RequestCallback requestCallback) {
 		this.fetcher = cachedPutRequestFetcher;
 		this.url = url;
 		this.forceFetchFromWeb = forceFetchFromWeb;
-		this.context = context;
+		this.method = method;
 		this.callback = requestCallback;
 		this.data = content;
 
-		if (loadingMessage != null) {
-			this.progressDialog = new ProgressDialog(context);
-			this.progressDialog.setMessage(loadingMessage);
-		}
 	}
 
 	@Override
@@ -74,7 +70,7 @@ public class AsyncPutTask extends AsyncTask<Void, Integer, String> {
 	@Override
 	protected String doInBackground(Void... params) {
 		try {
-			fetcher.cachedFetch(new URL(url), data, forceFetchFromWeb);
+			fetcher.cachedFetch(new URL(url), data, method, forceFetchFromWeb);
 
 			return null;
 		} catch (Exception e) {
